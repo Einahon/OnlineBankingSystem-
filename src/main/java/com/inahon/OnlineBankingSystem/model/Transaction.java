@@ -6,18 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name = "user")
-public class AccountUser {
+@Table(name = "transaction")
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String fullName;
-    private String email;
-    private String phone;
-    private String password;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private BankAccount account;
+    private Double amount;
+    private String type; // "DEPOSIT" or "WITHDRAWAL"
+    private LocalDateTime timestamp;
 }
