@@ -7,19 +7,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "bankAccount")
+@Entity
+@Table(name = "bank_Account")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+
+    @OneToOne
     @JoinColumn(name = "user_id")
     private AccountUser accountUser;
+
+    @Column(unique = true, nullable = false)
     private String accountNumber;
+
     private Double balance;
 }
