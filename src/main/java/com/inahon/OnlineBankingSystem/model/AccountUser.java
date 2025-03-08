@@ -19,6 +19,8 @@ public class AccountUser {
     private String fullName;
     @Column(unique = true, nullable = false)
     private String email;
+    @Column(unique = true, nullable = false)
+    private String username;
     private String phone;
     private String password;
     @OneToOne(mappedBy = "accountUser", cascade = CascadeType.ALL)
