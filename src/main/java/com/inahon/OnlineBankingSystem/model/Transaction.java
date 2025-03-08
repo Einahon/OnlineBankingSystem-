@@ -21,7 +21,11 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private BankAccount account;
+
     private Double amount;
-    private String type; // "DEPOSIT" or "WITHDRAWAL"
+
+    @Enumerated(EnumType.STRING)
+    private TransactionType type; // "DEPOSIT" or "WITHDRAWAL"
+
     private LocalDateTime timestamp;
 }

@@ -17,7 +17,10 @@ public class AccountUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fullName;
+    @Column(unique = true, nullable = false)
     private String email;
     private String phone;
     private String password;
+    @OneToOne(mappedBy = "accountUser", cascade = CascadeType.ALL)
+    private BankAccount bankAccount;
 }
