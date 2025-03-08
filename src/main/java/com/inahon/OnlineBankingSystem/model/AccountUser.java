@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "user")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+
+
 public class AccountUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,4 +27,12 @@ public class AccountUser {
     private String password;
     @OneToOne(mappedBy = "accountUser", cascade = CascadeType.ALL)
     private BankAccount bankAccount;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
