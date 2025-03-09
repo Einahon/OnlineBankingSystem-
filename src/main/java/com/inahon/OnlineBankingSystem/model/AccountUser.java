@@ -26,6 +26,7 @@ public class AccountUser {
     @OneToOne(mappedBy = "accountUser", cascade = CascadeType.ALL)
     private BankAccount bankAccount;
 
+
     public String getPassword() {
         return password;
     }
@@ -80,5 +81,8 @@ public class AccountUser {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public void setId(long l) {
     }
 }
